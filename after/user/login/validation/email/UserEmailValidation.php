@@ -12,4 +12,8 @@ class UserEmailValidation {
         return $this->userEmailValidationInterface->validate_user_email($email);
     }
 
+    function validate_email_template($email) {
+        return $this->userEmailValidationInterface->validate_email_template($email);
+    }
+
 }

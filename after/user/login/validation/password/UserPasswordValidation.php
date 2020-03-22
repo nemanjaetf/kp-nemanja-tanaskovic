@@ -12,8 +12,12 @@ class UserPasswordValidation {
         return $this->userPasswordValidationInterface->validate_user_password($password);
     }
 
-    function validate_password_match($password, $password2) {
-        return $this->NEKIDRUGISERVIS->validate_password_match($password, $password2);
+    function validate_user_password2($password2) {
+        return $this->userPasswordValidationInterface->validate_user_password2($password2);
+    }
+
+    function validate_match($password, $password2) {
+        return $this->userPasswordValidationInterface->validate_match($password, $password2);
     }
 
 }
