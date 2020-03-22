@@ -10,16 +10,16 @@ include './user/login/model/UserLogin.php';
 include './database/model/MySQL.php';
 
 // Interfaces
-include './user/login/validation/notification/error/LoginErrorFactoryInterface.php';
+include './notification/error/factory/LoginErrorFactoryInterface.php';
 include './user/login/validation/email/UserEmailValidationInterface.php';
 include './user/login/validation/password/UserPasswordValidationInterface.php';
 include './database/connection/DBConnectionInterface.php';
 include './database/factory/MySQLFactoryInterface.php';
 include './database/validation/connection/DBConnectionValidationInterface.php';
 
-include './user/login/validation/notification/error/LoginErrorFactory.php';
+include './notification/error/factory/LoginErrorFactory.php';
 include './JsonMessageFormatter.php';
-include './user/login/validation/notification/error/HandleLoginError.php';
+include './notification/error/factory/HandleLoginError.php';
 include './user/login/validation/email/EmailValidation.php';
 include './user/login/validation/email/UserEmailValidation.php';
 include './database/validation/connection/MySQLConnectionValidation.php';
