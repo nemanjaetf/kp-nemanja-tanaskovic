@@ -1,5 +1,7 @@
 <?php
 
 interface UserRepositoryInterface {
-    public function find(string $email);
+    public function find($link, string $email);
+
+    public function addUser($link, $email, $password);
 }

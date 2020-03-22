@@ -2,8 +2,12 @@
 
 class UserRepositoryImpl implements UserRepositoryInterface {
 
-    public function find($email) {
-        return "SELECT * FROM user WHERE email = '$email'";
+    public function find($link, $email) {
+        return mysqli_query($link, "SELECT * FROM user WHERE email = '$email'");
+    }
+
+    public function addUser($link, $email, $password) {
+        mysqli_query($link, "INSERT INTO user SET email = '$email', password = '$password'");
     }
 
 }

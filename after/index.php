@@ -17,6 +17,7 @@ include './database/connection/DBConnectionInterface.php';
 include './database/factory/MySQLFactoryInterface.php';
 include './database/validation/connection/DBConnectionValidationInterface.php';
 include './database/DatabaseInterface.php';
+include './user/repository/validation/UserRepositoryValidationInterface.php';
 
 include './notification/error/factory/LoginErrorFactory.php';
 include './notification/JsonMessageFormatter.php';
@@ -38,8 +39,13 @@ include './user/login/Login.php';
 include './database/MySQLDatabase.php';
 include './database/Database.php';
 
+include './user/repository/validation/MysqliNumRowsValidation.php';
+include './user/repository/validation/UserRepositoryValidation.php';
+
 include './user/repository/UserRepositoryInterface.php';
 include './user/repository/UserRepositoryImpl.php';
+include './user/repository/UserRepository.php';
+include './user/repository/User.php';
 
 // Validate login...
 $userLogin = new UserLogin();
@@ -57,3 +63,7 @@ $login->init($userLogin);
 // Connect to DB...
 $db = new Database();
 $link = $db->init();
+
+$user = new User();
+$result = $user->find($link, $userLogin->getEmail());
+$user->addUser($link, $userLogin->getEmail(), $userLogin->getPassword());
