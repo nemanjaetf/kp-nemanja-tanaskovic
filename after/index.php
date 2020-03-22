@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Models
-include './InfoMessage.php';
+include './notification/model/InfoMessage.php';
 include './user/login/model/UserLogin.php';
 include './database/model/MySQL.php';
 
@@ -18,7 +18,7 @@ include './database/factory/MySQLFactoryInterface.php';
 include './database/validation/connection/DBConnectionValidationInterface.php';
 
 include './notification/error/factory/LoginErrorFactory.php';
-include './JsonMessageFormatter.php';
+include './notification/JsonMessageFormatter.php';
 include './notification/error/factory/HandleLoginError.php';
 include './user/login/validation/email/EmailValidation.php';
 include './user/login/validation/email/UserEmailValidation.php';
