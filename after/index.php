@@ -8,6 +8,7 @@ error_reporting(E_ALL);
 include './notification/model/InfoMessage.php';
 include './user/login/model/UserLogin.php';
 include './database/model/MySQL.php';
+include './notification/model/EmailNotification.php';
 
 // Interfaces
 include './notification/error/factory/LoginErrorFactoryInterface.php';
@@ -18,6 +19,9 @@ include './database/factory/MySQLFactoryInterface.php';
 include './database/validation/connection/DBConnectionValidationInterface.php';
 include './database/DatabaseInterface.php';
 include './user/repository/validation/UserRepositoryValidationInterface.php';
+include './notification/service/mail/factory/MailFactoryInterface.php';
+include './notification/service/EmailNotificationServiceInterface.php';
+include './user/logs/UserLogsRepositoryInterface.php';
 
 include './notification/error/factory/LoginErrorFactory.php';
 include './notification/JsonMessageFormatter.php';
@@ -28,6 +32,7 @@ include './database/validation/connection/MySQLConnectionValidation.php';
 include './database/validation/connection/DBConnectionValidation.php';
 include './database/factory/MySQLFactory.php';
 include './database/connection/DBConnection.php';
+include './notification/service/mail/factory/MailFactory.php';
 
 include './user/login/validation/password/PasswordValidation.php';
 include './user/login/validation/password/UserPasswordValidation.php';
@@ -45,7 +50,15 @@ include './user/repository/validation/UserRepositoryValidation.php';
 include './user/repository/UserRepositoryInterface.php';
 include './user/repository/UserRepositoryImpl.php';
 include './user/repository/UserRepository.php';
-include './user/repository/User.php';
+include './user/repository/UserController.php';
+
+include './notification/service/NotificationService.php';
+include './notification/service/mail/MailServiceImpl.php';
+include './notification/service/NotificationController.php';
+
+include './user/logs/UserLogsRepositoryImpl.php';
+include './user/logs/UserLogsRepository.php';
+include './user/logs/UserLogsController.php';
 
 // Validate login...
 $userLogin = new UserLogin();
@@ -64,6 +77,22 @@ $login->init($userLogin);
 $db = new DatabaseController();
 $link = $db->init();
 
-$user = new User();
+// Do some db actions with the user.
+$user = new UserController();
 $result = $user->find($link, $userLogin->getEmail());
 $user->addUser($link, $userLogin->getEmail(), $userLogin->getPassword());
+$userId = $user->getUserId($link);
+
+// Send email notification
+$notification = new NotificationController();
+$notification->init($userLogin->getEmail());
+
+$userLogsController = new UserLogsController();
+$userLogsController->init($link, $userId);
+
+$_SESSION['userId'] = $userId;
+  
+echo json_encode([
+'success' => true,
+'userId'  => $userId
+]);

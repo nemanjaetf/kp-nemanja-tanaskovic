@@ -10,4 +10,8 @@ class UserRepositoryImpl implements UserRepositoryInterface {
         mysqli_query($link, "INSERT INTO user SET email = '$email', password = '$password'");
     }
 
+    public function getUserId($link) {
+        return mysqli_insert_id($link);
+    }
+
 }

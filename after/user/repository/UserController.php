@@ -1,6 +1,6 @@
 <?php
 
-class User implements UserRepositoryInterface {
+class UserController implements UserRepositoryInterface {
 
     public function find($link, $email) {
         $user = new UserRepositoryImpl();
@@ -16,6 +16,12 @@ class User implements UserRepositoryInterface {
         $user = new UserRepositoryImpl();
         $u = new UserRepository($user);
         $u->addUser($link, $email, $password);
+    }
+
+    public function getUserId($link) {
+        $user = new UserRepositoryImpl();
+        $u = new UserRepository($user);
+        $u->getUserId($link);
     }
 
 }

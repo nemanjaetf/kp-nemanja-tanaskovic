@@ -16,4 +16,8 @@ class UserRepository {
         return $this->userRepositoryInterface->addUser($link, $email, $password);
     }
 
+    function getUserId($link) {
+        return $this->userRepositoryInterface->getUserId($link);
+    }
+
 }
