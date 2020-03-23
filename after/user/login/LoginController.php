@@ -1,6 +1,6 @@
 <?php
 
-class Login {
+class LoginController {
 
     public function init(UserLogin $userLogin) {
         $loginValidation = new LoginValidation();

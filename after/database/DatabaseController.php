@@ -1,6 +1,6 @@
 <?php
 
-class Database implements DatabaseInterface {
+class DatabaseController implements DatabaseInterface {
 
     // Initialize DB.
     // In this case DB is MySQL, but it can be changed.

@@ -35,9 +35,9 @@ include './database/connection/mysql/MySQLDatabaseConnection.php';
 include './database/connection/DBConnect.php';
 
 include './user/login/validation/LoginValidation.php';
-include './user/login/Login.php';
+include './user/login/LoginController.php';
 include './database/MySQLDatabase.php';
-include './database/Database.php';
+include './database/DatabaseController.php';
 
 include './user/repository/validation/MysqliNumRowsValidation.php';
 include './user/repository/validation/UserRepositoryValidation.php';
@@ -57,11 +57,11 @@ $userLogin = new UserLogin();
 $userLogin->setEmail('');
 $userLogin->setPassword('');
 $userLogin->setPassword2('');
-$login = new Login();
+$login = new LoginController();
 $login->init($userLogin);
 
 // Connect to DB...
-$db = new Database();
+$db = new DatabaseController();
 $link = $db->init();
 
 $user = new User();
