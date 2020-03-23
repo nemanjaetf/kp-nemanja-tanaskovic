@@ -133,8 +133,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $_SESSION['userId'] = $userId;
 
-    $err = new HandleRegistrationSuccess();
-    $err->handle($userId);
+    $registrationSuccess = new HandleRegistrationSuccess();
+    $registrationSuccess->handle($userId);
 }
 
 ?>
