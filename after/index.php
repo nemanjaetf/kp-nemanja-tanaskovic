@@ -22,6 +22,7 @@ include './user/repository/validation/UserRepositoryValidationInterface.php';
 include './notification/service/mail/factory/MailFactoryInterface.php';
 include './notification/service/EmailNotificationServiceInterface.php';
 include './user/logs/UserLogsRepositoryInterface.php';
+include './notification/success/factory/LoginSuccessFactoryInterface.php';
 
 include './notification/error/factory/LoginErrorFactory.php';
 include './notification/JsonMessageFormatter.php';
@@ -33,6 +34,8 @@ include './database/validation/connection/DBConnectionValidation.php';
 include './database/factory/MySQLFactory.php';
 include './database/connection/DBConnection.php';
 include './notification/service/mail/factory/MailFactory.php';
+include './notification/success/factory/LoginSuccessFactory.php';
+include './notification/success/factory/HandleLoginSuccess.php';
 
 include './user/login/validation/password/PasswordValidation.php';
 include './user/login/validation/password/UserPasswordValidation.php';
@@ -91,8 +94,6 @@ $userLogsController = new UserLogsController();
 $userLogsController->init($link, $userId);
 
 $_SESSION['userId'] = $userId;
-  
-echo json_encode([
-'success' => true,
-'userId'  => $userId
-]);
+
+$err = new HandleLoginSuccess();
+$err->handle($userId);
