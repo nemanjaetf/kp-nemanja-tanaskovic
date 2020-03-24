@@ -2,7 +2,7 @@
 
 class NotificationController {
 
-    public function init($email) {
+    public function sendSignupEmailNotification($email) {
         $mailService = new MailServiceImpl();
         $notificationService = new NotificationService($mailService);
 

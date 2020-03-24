@@ -1,17 +1,17 @@
 <?php
 
-class UserController implements UserRepositoryInterface {
+class UserController {
 
     public function find($link, $email) {
         $userRepositoryImpl = new UserRepositoryImpl();
         $userRepository = new UserRepository($userRepositoryImpl);
         $result = $userRepository->find($link, $email);
 
-        $mysqliNumRowsValidation = new MysqliNumRowsValidation();
-        $userRepositoryValidation = new UserRepositoryValidation($mysqliNumRowsValidation);
+        $UserExistValidation = new UserExistValidation();
+        $userRepositoryValidation = new UserRepositoryValidation($UserExistValidation);
 
         // Check if this user already exist in our database.
-        $userRepositoryValidation->user_exist($result);
+        $userRepositoryValidation->userExist($result);
     }
 
     public function addUser($link, $email, $password) {

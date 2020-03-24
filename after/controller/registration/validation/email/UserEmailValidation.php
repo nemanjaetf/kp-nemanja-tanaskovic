@@ -8,12 +8,12 @@ class UserEmailValidation {
         $this->userEmailValidationInterface = $userEmailValidationInterface;
     }
  
-    function validate_user_email($email) {
-        return $this->userEmailValidationInterface->validate_user_email($email);
+    function validateUserEmal($email) {
+        return $this->userEmailValidationInterface->validateUserEmal($email);
     }
 
-    function validate_email_template($email) {
-        return $this->userEmailValidationInterface->validate_email_template($email);
+    function validateEmailTemplate($email) {
+        return $this->userEmailValidationInterface->validateEmailTemplate($email);
     }
 
 }

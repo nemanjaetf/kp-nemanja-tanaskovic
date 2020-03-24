@@ -1,10 +1,10 @@
 <?php
 
 class RegistrationErrorFactory implements RegistrationErrorFactoryInterface {
-    public function createError($type_of_error) : InfoMessage {
+    public function createError($typeOfError) : InfoMessage {
         $error = new InfoMessage();
         $error->setSuccess(false);
-        $error->setError($type_of_error);
+        $error->setError($typeOfError);
         return $error;
     }
 }

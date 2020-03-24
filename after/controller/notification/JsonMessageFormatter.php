@@ -2,7 +2,7 @@
 
 class JsonMessageFormatter {
 
-    public function format(InfoMessage $message) {
+    public function formatMsgToJson(InfoMessage $message) {
         $vars = array_filter(
             get_object_vars($message),
             function ($item) {

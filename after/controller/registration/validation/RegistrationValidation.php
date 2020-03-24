@@ -6,14 +6,14 @@ class RegistrationValidation {
     public function validate($email, $password, $password2) {
         $emailValidation = new EmailValidation();
         $userEmailValidation = new UserEmailValidation($emailValidation);
-        $userEmailValidation->validate_user_email($email);
-        $userEmailValidation->validate_email_template($email);
+        $userEmailValidation->validateUserEmal($email);
+        $userEmailValidation->validateEmailTemplate($email);
         
         $pwValidation = new PasswordValidation();
         $userPasswordValidation = new UserPasswordValidation($pwValidation);
-        $userPasswordValidation->validate_user_password($password);
-        $userPasswordValidation->validate_user_password2($password2);
-        $userPasswordValidation->validate_match($password, $password2);
+        $userPasswordValidation->validateUserPassword($password);
+        $userPasswordValidation->validateUserPassword2($password2);
+        $userPasswordValidation->validateMatch($password, $password2);
     }
 
 }

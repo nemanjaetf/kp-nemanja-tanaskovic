@@ -51,7 +51,7 @@ include '../controller/database/DatabaseInterface.php';
 include '../controller/database/connection/DBConnectionInterface.php';
 include '../controller/database/connection/mysql/MySQLDatabaseConnection.php';
 include '../controller/database/connection/DBConnection.php';
-include '../controller/database/connection/DBConnect.php';
+include '../controller/database/connection/DBConnectController.php';
 
 // controller/database/factory
 include '../controller/database/factory/MySQLFactoryInterface.php';
@@ -59,7 +59,7 @@ include '../controller/database/factory/MySQLFactory.php';
 
 // controller/database/validation/connection
 include '../controller/database/validation/connection/DBConnectionValidationInterface.php';
-include '../controller/database/validation/connection/MySQLConnectionValidation.php';
+include '../controller/database/validation/connection/mysql/MySQLConnectionValidation.php';
 include '../controller/database/validation/connection/DBConnectionValidation.php';
 
 // controller/database
@@ -81,7 +81,7 @@ include '../controller/registration/repository/UserRepository.php';
 
 // controller/registration/repository/validation
 include '../controller/registration/repository/validation/UserRepositoryValidationInterface.php';
-include '../controller/registration/repository/validation/MysqliNumRowsValidation.php';
+include '../controller/registration/repository/validation/UserExistValidation.php';
 include '../controller/registration/repository/validation/UserRepositoryValidation.php';
 
 include '../controller/registration/repository/UserController.php';
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Send email notification
     $notification = new NotificationController();
-    $notification->init($userRegistration->getEmail());
+    $notification->sendSignupEmailNotification($userRegistration->getEmail());
 
     $userLogsController = new UserLogsController();
     $userLogsController->init($link, $userId);
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['userId'] = $userId;
 
     $registrationSuccess = new HandleRegistrationSuccess();
-    $registrationSuccess->handle($userId);
+    $registrationSuccess->showMessage($userId);
 }
 
 ?>

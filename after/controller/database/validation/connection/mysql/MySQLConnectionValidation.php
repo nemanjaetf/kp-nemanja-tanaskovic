@@ -2,10 +2,10 @@
 
 class MySQLConnectionValidation implements DBConnectionValidationInterface {
 
-    public function validate_connection($link) {
+    public function validateConnection($link) {
         if (!$link) {
             $err = new HandleRegistrationError();
-            $err->handle('DB_error');
+            $err->showMessage('DB_error');
         }
 
         return $link;

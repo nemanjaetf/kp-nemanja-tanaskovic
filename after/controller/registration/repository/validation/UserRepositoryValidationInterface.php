@@ -2,6 +2,6 @@
 
 interface UserRepositoryValidationInterface {
 
-    public function user_exist($result);
+    public function userExist($result);
 
 }

@@ -2,6 +2,6 @@
 
 interface DBConnectionValidationInterface {
 
-    public function validate_connection($link);
+    public function validateConnection($link);
 
 }

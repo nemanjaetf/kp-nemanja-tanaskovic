@@ -8,8 +8,8 @@ class DBConnectionValidation {
         $this->dbConnectionValidationInterface = $dbConnectionValidationInterface;
     }
  
-    function validate_connection($link) {
-        return $this->dbConnectionValidationInterface->validate_connection($link);
+    function validateConnection($link) {
+        return $this->dbConnectionValidationInterface->validateConnection($link);
     }
 
 }

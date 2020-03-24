@@ -2,11 +2,11 @@
 
 class HandleRegistrationSuccess {
 
-    public function handle($userId) {
+    public function showMessage($userId) {
         $registrationSuccessFactory = new RegistrationSuccessFactory();
         $formatter = new JsonMessageFormatter();
         $jsonSuccess = $registrationSuccessFactory->createSuccess($userId);
-        echo json_encode($formatter->format($jsonSuccess));
+        echo json_encode($formatter->formatMsgToJson($jsonSuccess));
     }
 
 }

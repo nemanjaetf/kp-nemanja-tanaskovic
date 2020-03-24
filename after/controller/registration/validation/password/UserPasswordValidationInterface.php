@@ -2,10 +2,10 @@
 
 interface UserPasswordValidationInterface {
 
-    public function validate_user_password($password);
+    public function validateUserPassword($password);
 
-    public function validate_user_password2($password2);
+    public function validateUserPassword2($password2);
 
-    public function validate_match($password, $password2);
+    public function validateMatch($password, $password2);
 
 }

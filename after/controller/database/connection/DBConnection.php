@@ -7,9 +7,9 @@ class DBConnection {
     function __construct(DBConnectionInterface $dbConnectionInterface) {
         $this->dbConnectionInterface = $dbConnectionInterface;
     }
- 
-    function connect($host, $username, $password, $database) {
-        return $this->dbConnectionInterface->connect($host, $username, $password, $database);
+    
+    function connect() {
+        return $this->dbConnectionInterface->connect();
     }
 
 }

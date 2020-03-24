@@ -2,11 +2,11 @@
 
 class HandleRegistrationError {
 
-    public function handle($type_of_error) {
+    public function showMessage($typeOfError) {
         $err = new RegistrationErrorFactory();
         $formatter = new JsonMessageFormatter();
-        $jsonErr = $err->createError($type_of_error);
-        echo json_encode($formatter->format($jsonErr));
+        $jsonErr = $err->createError($typeOfError);
+        echo json_encode($formatter->formatMsgToJson($jsonErr));
         exit;
     }
 

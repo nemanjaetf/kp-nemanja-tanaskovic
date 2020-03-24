@@ -8,8 +8,8 @@ class UserRepositoryValidation {
         $this->userRepositoryValidationInterface = $userRepositoryValidationInterface;
     }
  
-    function user_exist($results) {
-        return $this->userRepositoryValidationInterface->user_exist($results);
+    function userExist($results) {
+        return $this->userRepositoryValidationInterface->userExist($results);
     }
 
 }
