@@ -9,7 +9,13 @@ class UserRepository {
     }
  
     function find($link, $email) {
-        return $this->userRepositoryInterface->find($link, $email);
+        $result = $this->userRepositoryInterface->find($link, $email);
+
+        $UserExistValidation = new UserExistValidation();
+        $userRepositoryValidation = new UserRepositoryValidation($UserExistValidation);
+
+        // Check if this user already exist in our database.
+        $userRepositoryValidation->userExist($result);
     }
 
     function addUser($link, $email, $password) {

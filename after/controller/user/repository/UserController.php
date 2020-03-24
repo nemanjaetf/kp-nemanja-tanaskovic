@@ -5,13 +5,7 @@ class UserController {
     public function find($link, $email) {
         $userRepositoryImpl = new UserRepositoryImpl();
         $userRepository = new UserRepository($userRepositoryImpl);
-        $result = $userRepository->find($link, $email);
-
-        $UserExistValidation = new UserExistValidation();
-        $userRepositoryValidation = new UserRepositoryValidation($UserExistValidation);
-
-        // Check if this user already exist in our database.
-        $userRepositoryValidation->userExist($result);
+        $userRepository->find($link, $email);
     }
 
     public function addUser($link, $email, $password) {
