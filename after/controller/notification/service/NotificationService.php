@@ -2,14 +2,14 @@
 
 class NotificationService {
 
-    private $emailNotificationServiceInterface;
+    private $notificationInterface;
  
-    function __construct(EmailNotificationServiceInterface $emailNotificationServiceInterface) {
-        $this->emailNotificationServiceInterface = $emailNotificationServiceInterface;
+    function __construct(NotificationInterface $notificationInterface) {
+        $this->notificationInterface = $notificationInterface;
     }
  
-    function sendSignupEmailNotification($emailNotification) {
-        return $this->emailNotificationServiceInterface->sendSignupEmailNotification($emailNotification);
+    function sendNotification() {
+        return $this->notificationInterface->sendNotification();
     }
 
 }

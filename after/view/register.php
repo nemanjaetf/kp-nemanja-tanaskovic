@@ -22,7 +22,7 @@ include '../controller/notification/error/HandleRegistrationError.php';
 
 // --------> Import email service <--------
 // controller/notification/service
-include '../controller/notification/service/EmailNotificationServiceInterface.php';
+include '../controller/notification/service/NotificationInterface.php';
 
 // controller/notification/service/mail/factory
 include '../controller/notification/service/mail/factory/MailFactoryInterface.php';
@@ -80,26 +80,26 @@ include '../controller/registration/repository/UserRepositoryImpl.php';
 include '../controller/registration/repository/UserRepository.php';
 
 // controller/registration/repository/validation
-include '../controller/registration/repository/validation/UserRepositoryValidationInterface.php';
-include '../controller/registration/repository/validation/UserExistValidation.php';
-include '../controller/registration/repository/validation/UserRepositoryValidation.php';
+include '../controller/validation/user/UserRepositoryValidationInterface.php';
+include '../controller/validation/user/UserExistValidation.php';
+include '../controller/validation/user/UserRepositoryValidation.php';
 
 include '../controller/registration/repository/UserController.php';
 // --------> End of registration <--------
 
-// --------> Import registration validation <--------
-// controller/registration/validation/email
-include '../controller/registration/validation/email/UserEmailValidationInterface.php';
-include '../controller/registration/validation/email/EmailValidation.php';
-include '../controller/registration/validation/email/UserEmailValidation.php';
+// --------> Import validation <--------
+// controller/validation/email
+include '../controller/validation/email/UserEmailValidationInterface.php';
+include '../controller/validation/email/EmailValidation.php';
+include '../controller/validation/email/UserEmailValidation.php';
 
-// controller/registration/validation/password
-include '../controller/registration/validation/password/UserPasswordValidationInterface.php';
-include '../controller/registration/validation/password/PasswordValidation.php';
-include '../controller/registration/validation/password/UserPasswordValidation.php';
+// controller/validation/password
+include '../controller/validation/password/UserPasswordValidationInterface.php';
+include '../controller/validation/password/PasswordValidation.php';
+include '../controller/validation/password/UserPasswordValidation.php';
 
-// controller/registration/validation
-include '../controller/registration/validation/RegistrationValidation.php';
+// controller/validation
+include '../controller/validation/RegistrationValidationController.php';
 // --------> End of of registration validation <--------
 
 include '../controller/registration/RegistrationController.php';
@@ -110,8 +110,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userRegistration->setEmail($_REQUEST['email']);
     $userRegistration->setPassword($_REQUEST['password']);
     $userRegistration->setPassword2($_REQUEST['password2']);
+
     $registration = new RegistrationController();
-    $registration->init($userRegistration);
+    $registration->validate($userRegistration);
 
     // Connect to DB...
     $db = new DatabaseController();
@@ -126,10 +127,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Send email notification
     $notification = new NotificationController();
-    $notification->sendSignupEmailNotification($userRegistration->getEmail());
+    $notification->sendEmailNotification($userRegistration->getEmail());
 
     $userLogsController = new UserLogsController();
-    $userLogsController->init($link, $userId);
+    $userLogsController->addNewRegisterUserLog($link, $userId);
 
     $_SESSION['userId'] = $userId;
 

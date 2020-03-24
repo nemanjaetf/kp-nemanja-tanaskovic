@@ -1,8 +1,17 @@
 <?php
 
-class MailServiceImpl implements EmailNotificationServiceInterface {
+class MailServiceImpl implements NotificationInterface {
 
-    public function sendSignupEmailNotification($emailNotification) {
+    private $email;
+
+    function __construct(string $email) {
+        $this->email = $email;
+    }
+
+    public function sendNotification() {
+        $mailFactory = new MailFactory();
+        $emailNotification = $mailFactory->createMail($this->email);
+
         mail(
             $emailNotification->getEmail(),
             $emailNotification->getSubject(),

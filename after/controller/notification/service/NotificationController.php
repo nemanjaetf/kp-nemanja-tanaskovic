@@ -2,14 +2,11 @@
 
 class NotificationController {
 
-    public function sendSignupEmailNotification($email) {
-        $mailService = new MailServiceImpl();
+    public function sendEmailNotification($email) {
+        $mailService = new MailServiceImpl($email);
         $notificationService = new NotificationService($mailService);
 
-        $mailFactory = new MailFactory();
-        $emailNotification = $mailFactory->createMail($email);
-
-        $notificationService->sendSignupEmailNotification($emailNotification);
+        $notificationService->sendNotification();
     }
 
 }

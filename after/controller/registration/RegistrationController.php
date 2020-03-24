@@ -2,13 +2,9 @@
 
 class RegistrationController {
 
-    public function init(UserRegistration $userRegistration) {
-        $registrationValidation = new RegistrationValidation();
-        $registrationValidation->validate(
-            $userRegistration->getEmail(),
-            $userRegistration->getPassword(),
-            $userRegistration->getPassword2()
-        );
+    public function validate(UserRegistration $userRegistration) {
+        $registrationValidation = new RegistrationValidationController();
+        $registrationValidation->validate($userRegistration);
     }
 
 }

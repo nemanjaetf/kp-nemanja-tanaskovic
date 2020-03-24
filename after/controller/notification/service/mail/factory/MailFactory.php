@@ -1,6 +1,7 @@
 <?php
 
 class MailFactory implements MailFactoryInterface {
+
     public function createMail($email) : EmailNotification {
         $emailNotification = new EmailNotification();
         $emailNotification->setEmail($email);
@@ -9,4 +10,5 @@ class MailFactory implements MailFactoryInterface {
         $emailNotification->setSendTo("adm@kupujemprodajem.com");
         return $emailNotification;
     }
+    
 }
