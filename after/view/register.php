@@ -68,23 +68,23 @@ include '../controller/database/DatabaseController.php';
 // --------> End of database <--------
 
 // --------> Import registration <--------
-// controller/registration/logs
-include '../controller/registration/logs/UserLogsRepositoryInterface.php';
-include '../controller/registration/logs/UserLogsRepositoryImpl.php';
-include '../controller/registration/logs/UserLogsRepository.php';
-include '../controller/registration/logs/UserLogsController.php';
+// controller/user/logs
+include '../controller/user/logs/UserLogsRepositoryInterface.php';
+include '../controller/user/logs/UserLogsRepositoryImpl.php';
+include '../controller/user/logs/UserLogsRepository.php';
+include '../controller/user/logs/UserLogsController.php';
 
-// controller/registration/repository
-include '../controller/registration/repository/UserRepositoryInterface.php';
-include '../controller/registration/repository/UserRepositoryImpl.php';
-include '../controller/registration/repository/UserRepository.php';
+// controller/user/repository
+include '../controller/user/repository/UserRepositoryInterface.php';
+include '../controller/user/repository/UserRepositoryImpl.php';
+include '../controller/user/repository/UserRepository.php';
 
-// controller/registration/repository/validation
+// controller/user/repository/validation
 include '../controller/validation/user/UserRepositoryValidationInterface.php';
 include '../controller/validation/user/UserExistValidation.php';
 include '../controller/validation/user/UserRepositoryValidation.php';
 
-include '../controller/registration/repository/UserController.php';
+include '../controller/user/repository/UserController.php';
 // --------> End of registration <--------
 
 // --------> Import validation <--------
@@ -102,7 +102,7 @@ include '../controller/validation/password/UserPasswordValidation.php';
 include '../controller/validation/RegistrationValidationController.php';
 // --------> End of of registration validation <--------
 
-include '../controller/registration/RegistrationController.php';
+include '../controller/user/RegistrationController.php';
 
 // Validate registration...
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
